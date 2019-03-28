@@ -1,8 +1,7 @@
 <?php
 namespace App\Features\MetaBoxes;
 use App\Features\PostTypes\RecipePostType;
-class RecipeDetailsMetabox
-{
+class RecipeDetailsMetabox {
   public static $slug = 'recipe_details_metabox';
   /**
    * Ajout d'une méta box au type de contenu qui sont passer dans le tableau $screens
@@ -10,13 +9,13 @@ class RecipeDetailsMetabox
    *
    * @return void
    */
-  public static function add_meta_box()
+  public static function add_meta_boxes()
   {
-    $screens = [RecipePostType::$slug];
+    $screens = [RecipePostType::$slug,'post'];
     foreach ($screens as $screen) {
       add_meta_box(
         self::$slug,           // Unique ID
-        __("Détails de la cette"),  // Box title
+        __("Détails de la cette lalalala"),  // Box title
         [self::class, 'render'],  // Content callback, must be of type callable
         $screen                   // Post type
       );
@@ -27,23 +26,27 @@ class RecipeDetailsMetabox
    *
    * @return void
    */
-  public static function render()
-  {
-    view('metaboxes/recipe-detail');
+  public static function render(){
+    $data = get_post_meta(get_the_ID());
+    $time = extract_data_attr('rat_time_preparation',$data);
+    $num_person = extract_data_attr('rat_person_number', $data);
+    view('metaboxes/recipe-detail', compact('time','num_person'));
   }
   /**
-   * sauvegarde des donners de la métabox
+   * sauvegarde des données de la métabox
    *
    * @param [type] $post_id reçu par le do_action
    * @return void
    */
-  public static function save($post_id)
-  {
-    // On verifie que $_POST ne soit pas vite pour effectuer l'action uniquement à la sauvegarde du post Type
+  public static function save($post_id){
+    // On verifie que $_POST ne soit pas vide pour effectuer l'action uniquement à la sauvegarde du post Type
     if (count($_POST) != 0) {
-      $time_preparation = $_POST['rat_time_preparation'];
-      // https://developer.wordpress.org/reference/functions/update_post_meta/
-      update_post_meta($post_id, 'rat_time_preparation', $time_preparation);
+      $data = [
+        'rat_time_preparation' => post_data('rat_time_preparation', $_POST),
+        'rat_person_number' => post_data('rat_person_number', $_POST)
+      ];
+      // enregistrement de toutes les valeurs grâce au helper
+      update_post_metas($post_id, $data);
     }
   }
 }

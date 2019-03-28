@@ -26,7 +26,7 @@ class RecipeTaxonomy
       'menu_name' => __('Type de rececette'),
     ];
     $args = [
-      'hierarchical' => true, // make it hierarchical (like categories)
+      'hierarchical' => true,
       'labels' => $labels,
       'show_ui' => true,
       'show_admin_column' => true,

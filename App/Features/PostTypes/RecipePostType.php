@@ -11,40 +11,26 @@ class RecipePostType
   public static function register(){
 
     $labels = [
-      'name' => __('Recette'),
-      'singular_name' => __('Recette'),
-      'add_new' => __('Ajouter une nouvelle rerececette')
+      'name' => __('Type de recettes'),
+      'singular_name' => __('Type de recette'),
+      'search_items' => __('Search Type de recettes'),
+      'all_items' => __('All Type de recettes'),
+      'parent_item' => __('Parent Type de recette'),
+      'parent_item_colon' => __('Parent Type de recette:'),
+      'edit_item' => __('Edit Type de recette'),
+      'update_item' => __('Update Type de recette'),
+      'add_new_item' => __('Add New Type de recette'),
+      'new_item_name' => __('New Type de recette Name'),
+      'menu_name' => __('Type de recette'),
     ];
 
     $options = [
+      'hierarchical' => true,
       'labels' => $labels,
-      'description' => '',
-      'public' => true,
-      'hierarchical' => false,
-      'exclude_from_search' => null,
-      'publicly_queryable' => null,
-      'show_ui' => null,
-      'show_in_menu' => null,
-      'show_in_nav_menus' => null,
-      'show_in_admin_bar' => null,
-      'menu_position' => null,
-      'menu_icon' => null,
-      'capability_type' => 'post',
-      'capabilities' => array(),
-      'map_meta_cap' => null,
-      'supports' => array('title', 'editor', 'excerpt', 'thumbnail'),
-      'register_meta_box_cb' => null,
-      'taxonomies' => array(),
-      'has_archive' => false,
-      'rewrite' => true,
+      'show_ui' => true,
+      'show_admin_column' => true,
       'query_var' => true,
-      'can_export' => true,
-      'delete_with_user' => null,
-      'show_in_rest' => true,
-      'rest_base' => false,
-      'rest_controller_class' => false,
-      '_builtin' => false,
-      '_edit_link' => 'post.php?post=%d'
+      'rewrite' => ['slug' => 'recette']
     ];
 
     register_post_type(self::$slug, $options);
