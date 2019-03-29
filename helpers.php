@@ -46,7 +46,7 @@ function post_data($key, $data)
 /**
  * Suppression de toutes les meta d'un post
  *
- * @param [type] $post_id
+ * @param  $post_id
  * @return void
  */
 function delete_post_metas($post_id)
