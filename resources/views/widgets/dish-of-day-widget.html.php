@@ -1,13 +1,21 @@
+<?= $args['before_widget'] ?>
 <div class="widget-wrapper">
 
-  <?php if (!empty($instance['title'])) : ?>
-  <h4> <?php echo $instance['title']; ?></h4>
-  <?php endif; ?>
+  <?php 
+  if (!empty($instance['title'])) : 
+    echo $args['before_title'] .  $instance['title'] . $args['after_title'];
+  endif; 
+  ?>
 
   <div class="textwidget">
 
-  <?php echo esc_html__($instance['text']); ?>
+  <?php   
+  if (!empty($instance['text'])) : 
+    echo esc_html__($instance['text']); 
+  endif; 
+  ?>
 
   </div>
 
-</div> 
+</div>
+<?= $args['after_widget'] ?>

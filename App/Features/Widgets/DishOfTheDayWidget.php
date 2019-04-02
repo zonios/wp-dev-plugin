@@ -33,8 +33,8 @@ class DishOfTheDayWidget extends \WP_Widget
   /**
    * methode pour arricher le widget sur le front
    *
-   * @param [type] $arg argument de la class defini dans la propriété public
-   * @param [type] $instance l'instance du widget sachant qu'il peut y avoir plusieurs widget utilisé
+   * @param  $arg argument de la class defini dans la propriété public
+   * @param  $instance l'instance du widget sachant qu'il peut y avoir plusieurs widget utilisé
    * @return void
    */
   public function widget($args, $instance)
@@ -59,8 +59,8 @@ class DishOfTheDayWidget extends \WP_Widget
   /**
    * Methode pour updater les informations du widget
    *
-   * @param [type] $new_instance
-   * @param [type] $old_instance
+   * @param  $new_instance
+   * @param  $old_instance
    * @return void
    */
   public function update($new_instance, $old_instance)

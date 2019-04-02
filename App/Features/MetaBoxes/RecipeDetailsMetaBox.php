@@ -11,7 +11,7 @@ class RecipeDetailsMetabox {
    */
   public static function add_meta_boxes()
   {
-    $screens = [RecipePostType::$slug,'post'];
+    $screens = [RecipePostType::$slug];
     foreach ($screens as $screen) {
       add_meta_box(
         self::$slug,           // Unique ID
