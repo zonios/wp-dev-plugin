@@ -1,7 +1,9 @@
 <?php
 namespace App;
+
 class Setup
 {
+  
   /**
    * Fonction pour démarrer une session afin de pouvoir utiliser la variable $_SESSION
    *
@@ -13,5 +15,16 @@ class Setup
     if (!session_id()) {
       session_start();
     }
+  }
+
+  /**
+   * Fonction pour ajouter des script et css pour l'admin
+   *
+   * @return void
+   */
+  public static function enqueue_scripts($page)
+  {
+    // Cette css a été créer à partir des fichier scss de bootstrap en n'utilisant que la partie grid. Si vous essayé de reproduire cette action, sachez que j'ai du rajouter ceci manuellement *{box-sizing:border-box};
+    wp_enqueue_style('admin-bootstrap-grid', RAT_PLUGIN_URL . "/resources/assets/css/bootstrap-grid.css");
   }
 }

@@ -6,10 +6,10 @@ $status = $_SESSION['notice']['status'];
 $message = $_SESSION['notice']['message'];
 ?>
 <div class="notice notice-<?= $status; ?> is-dismissible">
-    <p><?= $message; ?></p>
+  <p><?= $message; ?></p>
 </div>
 <?php
- // on supprimer la notification des variables de sessions afin qu'elle ne s'affiche plus au rechargement de la page
+// on supprimer la notification des variables de sessions afin qu'elle ne s'affiche plus au rechargement de la page
 unset($_SESSION['notice']);
 ?>
 <?php endif; ?> 
